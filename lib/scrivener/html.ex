@@ -1,5 +1,7 @@
 defmodule Scrivener.HTML do
-  use Phoenix.HTML
+
+  use PhoenixHTMLHelpers
+
   @defaults [view_style: :bootstrap, action: :index, page_param: :page, hide_single: false]
   @view_styles [:bootstrap, :semantic, :foundation, :bootstrap_v4, :materialize, :bulma]
   @raw_defaults [
@@ -8,7 +10,7 @@ defmodule Scrivener.HTML do
     previous: "<<",
     first: true,
     last: true,
-    ellipsis: raw("&hellip;")
+    ellipsis: Phoenix.HTML.raw("&hellip;")
   ]
   @moduledoc """
   For use with Phoenix.HTML, configure the `:routes_helper` module like the following:
@@ -636,7 +638,7 @@ defmodule Scrivener.HTML do
   defp safe(string) do
     string
     |> to_string()
-    |> raw()
+    |> Phoenix.HTML.raw()
   end
 
   def defaults(), do: @defaults
